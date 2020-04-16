@@ -12,8 +12,8 @@ body, html {
 
 .keys {
     display: flex;
-    flex: 1;
-    min-height: 100vh;
+    flex: 5;
+    min-height: 90vh;
     align-items: center;
     justify-content: center;
 }
@@ -50,6 +50,11 @@ kbd {
     color: #ffc600;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
     color: #ffc600;
     font-size: 3rem;
@@ -59,5 +64,5 @@ kbd {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-top: 10%;
+    min-height: 10vh;
 }
