@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>JS + CSS Clock</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<h1 id="currentHour"></h1>
 
 <div class="clock">
     <div class="clock-face">
@@ -15,41 +16,9 @@
         <div class="hand second-hand" id="second"></div>
     </div>
 </div>
-<script>
 
-  function moveHour(hour) {
-    const hourElement = document.getElementById('hour');
-    // console.log('hour', hour);
-    const rotation = 90 + hour * 30;
-    hourElement.style.transform = `rotate(${rotation}deg)`;
-  }
+<h3>Solution by sweetraare</h3>
 
-  function moveMinute(minute) {
-    const minuteElement = document.getElementById('minute');
-    const rotation = 90 + (minute * 6);
-    minuteElement.style.transform = `rotate(${rotation}deg)`;
-  }
-
-  function moveSecond(second) {
-    const secondElement = document.getElementById('second');
-    const rotation = 90 + (second * 6);
-    secondElement.style.transform = `rotate(${rotation}deg)`;
-  }
-
-  function moveClock() {
-    setInterval(() => {
-      const date = new Date();
-      const hour = date.getHours();
-      const minute = date.getMinutes();
-      const second = date.getSeconds();
-      moveHour(hour);
-      moveMinute(minute);
-      moveSecond(second);
-    }, 1000)
-  }
-
-  moveClock();
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>

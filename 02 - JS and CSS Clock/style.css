@@ -4,6 +4,7 @@ html {
     font-family: 'helvetica neue';
     text-align: center;
     font-size: 10px;
+    font-family: 'Lexend Giga', sans-serif;
 }
 
 body {
@@ -13,6 +14,7 @@ body {
     flex: 1;
     min-height: 100vh;
     align-items: center;
+    flex-direction: column;
 }
 
 .clock {
@@ -43,4 +45,7 @@ body {
     position: absolute;
     top: 50%;
     transform-origin: right;
+    transition: all 0.03s;
+    transition-timing-function: cubic-bezier(.6, -0.28, .74, .05);
+    transform: rotate(90deg);
 }
