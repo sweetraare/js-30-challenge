@@ -1,36 +1,15 @@
-const image = document.getElementById('image');
-
-function handleBlurChange() {
-  const blurInput = document.getElementById('blur');
-  blurInput.onchange = (event) => {
-    const blur = event.target.value;
-    image.style.setProperty('--image-blur', `${blur}px`);
-  }
+// This Solution was deeply inspired by WesBos solution
+function changeProperty() {
+  // In here, this is the hole html element
+  console.log(this);
+  // document.documentElement gets all html, here I can change :root variables
+  const sizing = this.dataset.sizing || '';
+  document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${sizing}`);
 }
 
-function handleSpacingChange() {
-  const spacingInput = document.getElementById('spacing');
-  spacingInput.onchange = (event) => {
-    const spacing = event.target.value;
-    image.style.setProperty('--image-move', `${spacing}px`);
-  }
-}
+const inputs = document.querySelectorAll('.controls input');
 
-function handleBaseChange() {
-  const baseInput = document.getElementById('base');
-  baseInput.onchange = (event) => {
-    const base = event.target.value;
-    image.style.setProperty('--base-color', base);
+inputs.forEach(input => {
+  input.addEventListener('change', changeProperty);
+});
 
-    const h1Text = document.getElementsByClassName('hl');
-    for (let i = 0; i < h1Text.length; i++) {
-      h1Text[i].style.setProperty('--base-color', base);
-    }
-
-  }
-}
-
-
-handleSpacingChange();
-handleBlurChange();
-handleBaseChange();
