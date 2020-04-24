@@ -1,5 +1,7 @@
 # JS 30 challenge
+
 ## Made by
+
 Alex Ulloa
 
 sweetraare
@@ -7,15 +9,17 @@ sweetraare
 ajua_1696@hotmail.com
 
 ## Based on
+
 This project resolves the `#JavaScript30` which can be found [here](https://javascript30.com/)
 
 ## Challenges solved
+
 - [x] 01 - JavaScript Drum Kit
-- [X] 02 - JS and CSS Clock
+- [x] 02 - JS and CSS Clock
 - [x] 03 - CSS Variables
 - [x] 04 - Array Cardio Day 1
 - [x] 05 - Flex Panel Gallery
-- [ ] 06 - Type Ahead
+- [x] 06 - Type Ahead
 - [ ] 07 - Array Cardio Day 2
 - [ ] 08 - Fun with HTML5 Canvas
 - [ ] 09 - Dev Tools Domination
