@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="search-form">
+      <input type="text" class="search" placeholder="City or State" />
+      <ul class="suggestions">
+        <li>Filter for a city</li>
+        <li>or a state</li>
+      </ul>
+    </form>
+    <script>
+      const endpoint =
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+
+      let cities = [];
+
+      fetch(endpoint)
+        .then((blob) => blob.json())
+        .then((data) => (cities = data));
+
+      function inputChange() {
+        const citiesFiltered = findCity(this.value);
+        const list = document.querySelector("ul");
+        const regex = new RegExp(this.value, "gi");
+        const htmlToInsert = citiesFiltered
+          .map((city) => {
+            const cityToShow = city.city.replace(
+              regex,
+              `<span class='hl'>${this.value}</span>`
+            );
+
+            const stateToShow = city.state.replace(
+              regex,
+              `<span class='hl'>${this.value}</span>`
+            );
+            return `<li>
+              <span class='name'>${cityToShow}, ${stateToShow}</span>
+              <span class='population'> ${city.population}</span> 
+              </li>`;
+          })
+          .join("");
+        list.innerHTML = htmlToInsert;
+      }
+
+      function findCity(name) {
+        const regex = new RegExp(name, "gi");
+        let response = cities;
+        response = response.filter((place) => {
+          return place.city.match(regex) || place.state.match(regex);
+        });
+
+        return response;
+      }
+
+      const input = document.querySelector("input");
+      input.addEventListener("keyup", inputChange);
+    </script>
+  </body>
+</html>
