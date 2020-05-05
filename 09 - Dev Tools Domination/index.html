@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+
+      // If I wanna know what function makes something change:
+      // break on -> Attribute modification
+
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
+
+      // Regular
+      console.log("this is a regular console log");
+
+      // Interpolated
+      console.log(
+        "You could interpolate strings like this one: %s",
+        "this is been interpolated"
+      );
+
+      // Styled
+      console.log(
+        "%c this is gonna be a styled string in the console",
+        "font-size: 30px; background-color: lightblue; color: darkorange"
+      );
+
+      // warning!
+      console.warn("This is a warning, and is gonna show u a stack trace");
+
+      // Error :|
+      console.error("This is an error, and is gonna show u a stack trace");
+
+      // Info
+      console.info(
+        "This is to show some info, like I was born on September 16th 1996"
+      );
+
+      // Testing
+      console.assert(1 == 2, "This is gonna show only when te assert fails");
+
+      // clearing
+      // console.clear();
+
+      // Viewing DOM Elements
+      const p = document.querySelector("p");
+      console.log(p);
+      console.dir(p);
+      console.dirxml(p);
+
+      // Grouping together
+      dogs.forEach((dog) => {
+        console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+        console.groupEnd(`${dog.name}`);
+      });
+
+      // counting
+      console.count("hugo");
+
+      // timing
+      console.time("fetching data tooks");
+      fetch("https://api.github.com/users/wesbos")
+        .then((data) => data.json())
+        .then((data) => {
+          console.timeEnd("fetching data tooks");
+          console.log(data);
+        });
+    </script>
+  </body>
+</html>
