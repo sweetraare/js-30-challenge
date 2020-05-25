@@ -26,7 +26,7 @@ This project resolves the `#JavaScript30` which can be found [here](https://java
 - [x] 10 - Hold Shift and Check Checkboxes
 - [x] 11 - Custom Video Player
 - [x] 12 - Key Sequence Detection
-- [ ] 13 - Slide in on Scroll
+- [x] 13 - Slide in on Scroll
 - [ ] 14 - JavaScript References VS Copying
 - [ ] 15 - LocalStorage
 - [ ] 16 - Mouse Move Shadow
