@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS Reference VS Copy</title>
+  </head>
+  <body>
+    <h1>Please open your console in order to see whats going on</h1>
+
+    <script>
+      // start with strings, numbers and booleans
+
+      let number = 100;
+      let number2 = number;
+      console.log({ number, number2 });
+      number = 200;
+      console.log({ number, number2 });
+
+      // it works same for strings
+
+      let name = "Alex";
+      let name2 = name;
+      console.log({ name, name2 });
+      name = "Javier";
+      console.log({ name, name2 });
+
+      // Let's say we have an array
+      const players = ["Wes", "Sarah", "Ryan", "Poppy"];
+
+      const team = players;
+      console.log({ players, team });
+      team[5] = "Alex";
+      console.log({ players, team }, "in this case it change both");
+
+      // So, how do we fix this? We take a copy instead!
+      const teamCopy = players.slice();
+      console.log({ players, teamCopy });
+      teamCopy[5] = "Copy";
+      console.log({ players, teamCopy }, "in this case it change only copy");
+
+      // one way
+
+      // or create a new array and concat the old one in
+      const teamNew = [].concat(players);
+      console.log({ players, teamNew });
+      teamNew[5] = "New";
+      console.log({ players, teamNew }, "in this case it change only new");
+
+      // or use the new ES6 Spread
+      const teamSpread = [...players];
+      console.log({ players, teamSpread });
+      teamSpread[5] = "Spread";
+      console.log(
+        { players, teamSpread },
+        "in this case it change only spread"
+      );
+
+      // now when we update it, the original one isn't changed
+
+      const teamArrayFrom = Array.from(players);
+      console.log({ players, teamArrayFrom });
+      teamArrayFrom[5] = "ArrayFrom";
+      console.log(
+        { players, teamArrayFrom },
+        "in this case it change only array from"
+      );
+
+      // The same thing goes for objects, let's say we have a person object
+
+      // with Objects
+      const person = {
+        name: "Wes Bos",
+        age: 80,
+      };
+
+      // and think we make a copy:
+      const captain = person;
+      captain.number = 100;
+      console.log({ person, captain });
+
+      // how do we take a copy instead?
+      const captain200 = Object.assign({}, person, { number: 200 });
+      console.log(
+        { person, captain, captain200 },
+        "be carefull it will only go 1 lvl deep"
+      );
+
+      // We will hopefully soon see the object ...spread
+      const captainSpread = { ...person };
+      captainSpread.name = "Captain Spred";
+      console.log({ captainSpread, person }, 'Now we have it');
+
+      // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    </script>
+  </body>
+</html>
