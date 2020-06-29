@@ -32,8 +32,8 @@ This project resolves the `#JavaScript30` which can be found [here](https://java
 - [x] 16 - Mouse Move Shadow
 - [x] 17 - Sort Without Articles
 - [x] 18 - Adding Up Times with Reduce
-- [ ] 19 - Webcam Fun
-- [ ] 20 - Speech Detection
+- [x] 19 - Webcam Fun
+- [x] 20 - Speech Detection
 - [ ] 21 - Geolocation
 - [ ] 22 - Follow Along Link Highlighter
 - [ ] 23 - Speech Synthesis
