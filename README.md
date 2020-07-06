@@ -35,7 +35,7 @@ This project resolves the `#JavaScript30` which can be found [here](https://java
 - [x] 19 - Webcam Fun
 - [x] 20 - Speech Detection
 - [x] 21 - Geolocation
-- [ ] 22 - Follow Along Link Highlighter
+- [x] 22 - Follow Along Link Highlighter
 - [ ] 23 - Speech Synthesis
 - [ ] 24 - Sticky Nav
 - [ ] 25 - Event Capture, Propagation, Bubbling and Once
