@@ -37,10 +37,10 @@ This project resolves the `#JavaScript30` which can be found [here](https://java
 - [x] 21 - Geolocation
 - [x] 22 - Follow Along Link Highlighter
 - [x] 23 - Speech Synthesis
-- [ ] 24 - Sticky Nav
-- [ ] 25 - Event Capture, Propagation, Bubbling and Once
-- [ ] 26 - Stripe Follow Along Nav
-- [ ] 27 - Click and Drag
-- [ ] 28 - Video Speed Controller
+- [x] 24 - Sticky Nav
+- [x] 25 - Event Capture, Propagation, Bubbling and Once
+- [x] 26 - Stripe Follow Along Nav
+- [x] 27 - Click and Drag
+- [] 28 - Video Speed Controller
 - [ ] 29 - Countdown Timer
 - [ ] 30 - Whack A Mole
