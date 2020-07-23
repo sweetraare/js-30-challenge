@@ -41,6 +41,6 @@ This project resolves the `#JavaScript30` which can be found [here](https://java
 - [x] 25 - Event Capture, Propagation, Bubbling and Once
 - [x] 26 - Stripe Follow Along Nav
 - [x] 27 - Click and Drag
-- [] 28 - Video Speed Controller
+- [x] 28 - Video Speed Controller
 - [ ] 29 - Countdown Timer
 - [ ] 30 - Whack A Mole
