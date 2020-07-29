@@ -42,5 +42,11 @@ This project resolves the `#JavaScript30` which can be found [here](https://java
 - [x] 26 - Stripe Follow Along Nav
 - [x] 27 - Click and Drag
 - [x] 28 - Video Speed Controller
-- [ ] 29 - Countdown Timer
-- [ ] 30 - Whack A Mole
+- [x] 29 - Countdown Timer
+- [x] 30 - Whack A Mole
+
+## Finish
+
+I have finished this JS 30 day challenge and I have learn a lot of useful things about JS and how to maniputale `DOM elements`.
+
+In some cases, I have added some new features in order to keep practicing and learning.

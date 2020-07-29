@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Whack A Mole!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Whack-a-mole! <span class="score">0</span></h1>
+    <h2 class="time-left">Time left: <span class="time">30</span></h2>
+    <div class="controls">
+      <input type="text" placeholder="Insert your nickname" />
+      <select> </select>
+      <button id="startButton">Start!</button>
+    </div>
+
+    <div class="game">
+      <div class="hole hole1">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole2">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole3">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole4">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole5">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole6">
+        <div class="mole"></div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="modal-container">
+        <h2>Top Scores</h2>
+        <hr />
+        <ol></ol>
+      </div>
+    </div>
+
+    <script>
+      const holes = document.querySelectorAll(".hole");
+      const scoreBoard = document.querySelector(".score");
+      const moles = document.querySelectorAll(".mole");
+      const startButton = document.getElementById("startButton");
+      const time = document.querySelector(".time");
+      const levelSelect = document.querySelector("select");
+      const playerNickname = document.querySelector("input");
+      const positionsDisplay = document.querySelector(".modal-container ol");
+      const modal = document.querySelector(".modal");
+
+      // game variables
+      let gameFinish = false;
+      let lastHoleSelected;
+      let score = 0;
+      let timeLeft = 30;
+      let countdown;
+      let showTime = { min: 800, max: 1300 };
+      let positions = JSON.parse(localStorage.getItem("easy")) || [];
+      let selectedLevel = "easy";
+
+      const levels = [
+        { name: "Easy", value: "easy", time: { min: 800, max: 1300 } },
+        { name: "Medium", value: "medium", time: { min: 450, max: 800 } },
+        { name: "Hard", value: "hard", time: { min: 200, max: 300 } },
+        { name: "Imposible", value: "imposible", time: { min: 10, max: 200 } },
+      ];
+
+      modal.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      levelSelect.innerHTML = levels.reduce((sum, level) => {
+        sum += `<option value=${level.value}>${level.name}</option>`;
+        return sum;
+      }, "");
+
+      levelSelect.addEventListener("change", (e) => {
+        const levelFound = levels.find(
+          (level) => level.value === e.target.value
+        );
+        selectedLevel = levelFound.value;
+        positions = JSON.parse(localStorage.getItem(selectedLevel)) || [];
+        showTime = levelFound.time;
+      });
+
+      startButton.addEventListener("click", () => startGame());
+
+      function whack(e) {
+        if (e.isTrusted) {
+          score++;
+          this.parentElement.classList.remove("up");
+          scoreBoard.textContent = score;
+        }
+      }
+
+      moles.forEach((mole) => mole.addEventListener("click", whack));
+
+      function giveRandomTime(min = 0, max = 20) {
+        return Math.round(Math.random() * max + min);
+      }
+
+      function pickRandomHole(holes) {
+        const randomIndex = Math.floor(Math.random() * holes.length);
+
+        const randomHole = holes[randomIndex];
+
+        if (randomHole === lastHoleSelected) {
+          return pickRandomHole(holes);
+        }
+
+        lastHoleSelected = randomHole;
+
+        return randomHole;
+      }
+
+      function showMole(hole) {
+        const time = giveRandomTime(showTime.min, showTime.max);
+
+        hole.classList.add("up");
+        setTimeout(() => {
+          hole.classList.remove("up");
+          if (!gameFinish) {
+            showMole(pickRandomHole(holes));
+          }
+        }, time);
+      }
+
+      function endGame() {
+        gameFinish = true;
+        positions.push({ nickname: playerNickname.value, score });
+        positions = positions.sort((a, b) => {
+          if (a.score < b.score) {
+            return 1;
+          }
+          if (a.score > b.score) {
+            return -1;
+          }
+          return 0;
+        });
+
+        const positionsShow = positions.reduce((sum, position) => {
+          sum += `<li>${position.nickname}\t (${position.score})</li>`;
+          return sum;
+        }, "");
+
+        positionsDisplay.innerHTML = positionsShow;
+        modal.style.display = "flex";
+
+        localStorage.setItem(selectedLevel, JSON.stringify(positions));
+      }
+
+      function startGame() {
+        gameFinish = false;
+        score = 0;
+        timeLeft = 30;
+        time.textContent = timeLeft;
+        scoreBoard.textContent = score;
+        showMole(pickRandomHole(holes));
+        setTimeout(endGame, 30000);
+
+        // time left
+        countdown = setInterval(() => {
+          if (timeLeft === 0) {
+            clearInterval(countdown);
+            return;
+          }
+          timeLeft--;
+          time.textContent = timeLeft;
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

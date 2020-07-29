@@ -1,0 +1,171 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #ffc600;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Amatic SC", cursive;
+}
+
+h1 {
+  text-align: center;
+  font-size: 10rem;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.time-left {
+  text-align: right;
+  padding-right: 100px;
+  font-size: 6rem;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.07);
+  border: 2px black solid;
+  font-size: 2rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  transform: scale(0.9);
+}
+
+button:hover {
+  transform: scale(1);
+}
+
+input {
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.07);
+  border: 2px black solid;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  transform: scale(0.9);
+}
+
+input:hover {
+  transform: scale(1);
+}
+
+select {
+  font-size: 2rem;
+  border: 2px black solid;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("./ordenar.svg") 96% / 15% no-repeat rgba(0, 0, 0, 0.07);
+  transform: scale(0.9);
+}
+
+select:hover {
+  transform: scale(1);
+}
+
+.score {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0 3rem;
+  line-height: 1;
+  border-radius: 1rem;
+}
+
+.game {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hole:after {
+  display: block;
+  background: url(dirt.svg) bottom center no-repeat;
+  background-size: contain;
+  content: "";
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: url("mole.svg") bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+.hole.up .mole {
+  top: 0;
+}
+
+.controls {
+  margin-top: 10px;
+  max-width: 50%;
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  background-color: rgba(12, 0, 93, 0.7);
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  width: 40%;
+  height: 70%;
+  background-color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 5rem;
+  overflow-y: scroll;
+}
+
+.modal-container h2 {
+  font-size: 6rem;
+  margin-bottom: 1px;
+  line-height: 1;
+}
